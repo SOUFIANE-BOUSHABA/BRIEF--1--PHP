@@ -1,6 +1,6 @@
 <?php
-    include 'connexion.php';
-   
+     session_start();
+     include 'connexion.php';
 ?>
 
 
@@ -18,24 +18,7 @@
 
 <body>
     <main>
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
-                <div class="container d-flex justify-content-between ">
-                    <a class="navbar-brand" href="#"><span>You</span>Contact</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-
-                    <div>
-                        <button type="button" class="btn btn-dark"><a href="inscription.php">login</a></button>
-                    </div>
-
-                </div>
-            </nav>
-        </header>
+    <?php include "header.php"; ?>
 
         <form action="" method="post">
             <label for="nom">Nom:</label>
@@ -57,24 +40,22 @@
 </html>
 
 <?php
-//  if(isset($_GET["logout"])){
-//     session_destroy();
-// }
+
 if(isset($_POST["ok"])){
     $name = $_POST["nom"];
     $pwd = MD5($_POST["password"]);
-   echo $name  , $pwd ;
+    echo $name  , $pwd ;
     $sql = "SELECT * FROM profil WHERE nom='$name' AND pwd ='$pwd'";
-    $res=$conn->query($sql);
+    $res=mysqli_query($conn, $sql);
     if(!$res) {
-        echo "Error: " . $conn->error;
         header("Location: inscription.php");
     } else {
         if($res->num_rows > 0){
-            $user = $res->fetch_assoc();
+            $user = mysqli_fetch_assoc($res);
             $_SESSION['id_profil'] = $user["id_profil"];
             header("Location: profile.php");
             exit();
+
         }
     }
 }

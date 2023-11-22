@@ -1,7 +1,12 @@
 <?php
  include 'connexion.php';
  session_start();
-//  echo   $_SESSION["name"]  ,   $_SESSION['id_profil'];
+
+ if (!isset($_SESSION['id_profil'])) {
+     header("Location: login.php");
+ }
+
+
 ?>
 
 <html lang="en">
@@ -17,25 +22,7 @@
 
 <body>
     <main>
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
-                <div class="container d-flex justify-content-between ">
-                    <a class="navbar-brand" href="#"><span>You</span>Contact</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button> 
-
-  
-                    <div>
-                        <button type="button" class="btn btn-dark"><a href="inscription.php">login</a></button>
-                    </div>
-
-                </div>
-            </nav>
-        </header>
-
+      <?php include "header.php"; ?>
         <section class="" style="margin-top:100px">
             <div class="container d-flex justify-content-end">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -103,7 +90,8 @@
 
                 <tbody>
                     <?php
-                $query = "SELECT * FROM `contact`";
+                   $id = $_SESSION['id_profil'];
+                $query = "SELECT * FROM `contact`  where id_profil = $id";
                 $result = mysqli_query($conn, $query);
 
                 if (mysqli_num_rows($result) > 0) {
@@ -174,7 +162,9 @@
                  <?php
                     }
                 } else {
-                    echo "0 results";
+                    echo "<tr>";
+                    echo "<td>0 results</td>";
+                    echo "</tr>";
                 }
                 ?>
 
@@ -203,7 +193,7 @@ if (isset($_POST['ok'])) {
     $email = $_POST['email'];
     $adress = $_POST['adresse'];
     $date = date('Y-m-d');
-    $idprofil = 1;
+    $idprofil = $_SESSION['id_profil'];
 
    
 

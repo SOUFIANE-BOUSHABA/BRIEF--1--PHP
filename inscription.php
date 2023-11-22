@@ -18,24 +18,7 @@
 
 <body>
     <main>
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
-                <div class="container d-flex justify-content-between ">
-                    <a class="navbar-brand" href="#"><span>You</span>Contact</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-
-                    <div>
-                        <button type="button" class="btn btn-dark"><a href="inscription.php">login</a></button>
-                    </div>
-
-                </div>
-            </nav>
-        </header>
+    <?php include "header.php"; ?>
 
         <form action="" method="post">
             <label for="nom">Nom:</label>
