@@ -1,9 +1,8 @@
 <?php
  include 'connexion.php';
-
+ session_start();
+//  echo   $_SESSION["name"]  ,   $_SESSION['id_profil'];
 ?>
-
-
 
 <html lang="en">
 
@@ -26,11 +25,11 @@
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
-                    </button>
+                    </button> 
 
-
+  
                     <div>
-                        <button type="button" class="btn btn-dark">login</button>
+                        <button type="button" class="btn btn-dark"><a href="inscription.php">login</a></button>
                     </div>
 
                 </div>

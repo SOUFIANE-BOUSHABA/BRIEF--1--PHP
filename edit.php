@@ -12,7 +12,8 @@ if(isset($_POST['ok'])) {
     $adresse = $_POST['adresse'];
 
     $sql = "UPDATE contact SET nom='$nom', prenom='$prenom', tele='$tele', email='$email', adresse='$adresse' WHERE id_contact=$id";
-    mysqli_query($conn, $sql)
+    mysqli_query($conn, $sql);
  
 }
+header('location:contact.php');
 ?>
