@@ -24,7 +24,8 @@
       <?php include "header.php"; ?>
         <section class="" style="margin-top:100px">
             <div class="container d-flex justify-content-end">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <a href="export.php" class="btn btn-dark" role="button">Export to Excel</a>
+                <button type="button" class="btn btn-primary" style="margin-left:30px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     add contact
                 </button>
 
@@ -43,23 +44,23 @@
                                 <form action="" method="post">
                                     <div class="mb-3 d-flex gap-2">
 
-                                        <input type="text" class="form-control" id="" name="first"
+                                        <input type="text" class="form-control" id="" name="first" required
                                             aria-describedby="emailHelp" placeholder="first name">
-                                        <input type="text" class="form-control" id="" name="last"
+                                        <input type="text" class="form-control" id="" name="last" required
                                             aria-describedby="emailHelp" placeholder="last name">
 
                                     </div>
                                     <div class="mb-3 d-flex gap-2">
 
-                                        <input type="text" class="form-control" id="" name="number"
+                                        <input type="text" class="form-control" id="" name="number" required
                                             aria-describedby="emailHelp" placeholder="0676767676">
-                                        <input type="email" class="form-control" id="" name="email"
+                                        <input type="email" class="form-control" id="" name="email" required
                                             aria-describedby="emailHelp" placeholder="email">
 
                                     </div>
                                     <div class="mb-3">
 
-                                        <input type="text" name="adresse" class="form-control" id="adresse"
+                                        <input type="text" name="adresse" class="form-control" id="adresse" required
                                             placeholder="adresse">
                                     </div>
 

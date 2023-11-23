@@ -20,18 +20,40 @@
     <main>
     <?php include "header.php"; ?>
 
-        <form action="" method="post">
-            <label for="nom">Nom:</label>
-            <input type="text" id="nom" name="nom" required><br>
+       <div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white text-center">
+                    <h3>Inscription</h3>
+                </div>
+                <div class="card-body">
+                    <form action="" method="post">
+                        <div class="mb-3">
+                            <label for="nom" class="form-label">Nom:</label>
+                            <input type="text" class="form-control" id="nom" name="nom" required>
+                        </div>
 
-            <label for="prenom">Prénom:</label>
-            <input type="text" id="prenom" name="prenom" required><br>
+                        <div class="mb-3">
+                            <label for="prenom" class="form-label">Prénom:</label>
+                            <input type="text" class="form-control" id="prenom" name="prenom" required>
+                        </div>
 
-            <label for="password">Mot de passe:</label>
-            <input type="password" id="password" name="password" required><br>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Mot de passe:</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
 
-            <input type="submit" name="ok" value="inscrire">
-        </form>
+                        <div class="text-center">
+                            <button type="submit" name="ok" class="btn btn-dark">S'inscrire</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">

@@ -40,7 +40,7 @@ if (isset($_GET['logout'])) {
                             </ul>
                         </div>';
                 } else {
-                    echo '<button type="button" class="btn btn-dark"><a href="login.php">login</a></button>';
+                    echo '<button type="button" class="btn btn-dark"><a href="login.php" style="text-decoration:none; color:white;">login</a></button>';
                 }
                 ?>
             </div>
