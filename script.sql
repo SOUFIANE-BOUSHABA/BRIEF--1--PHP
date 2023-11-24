@@ -21,3 +21,6 @@ CREATE TABLE contact(
     id_profil int ,
     FOREIGN KEY (id_profil) REFERENCES profil(id_profil)
 )ENGINE=INNODB;
+
+
+

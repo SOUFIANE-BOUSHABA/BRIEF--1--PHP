@@ -129,9 +129,9 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action='edit.php?id=<?= $row["id_contact"] ?>' method="post">
+                                <form action='edit.php' method="post">
                                     <div class="mb-3 d-flex gap-2">
-
+                                        <input type="hidden" value="<?= $row["id_contact"] ?>" name="id">
                                         <input type="text" class="form-control" id="" name="first" value="<?=$row["nom"]?>"
                                             aria-describedby="emailHelp" placeholder="first name">
                                         <input type="text" class="form-control" id="" name="last" value="<?=$row["prenom"]?>"

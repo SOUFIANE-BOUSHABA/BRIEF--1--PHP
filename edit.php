@@ -4,7 +4,7 @@
 include 'connexion.php';
 if(isset($_POST['ok'])) {
 
-    $id = $_GET['id']; 
+    $id = $_POST['id']; 
     $nom = $_POST['first'];
     $prenom = $_POST['last'];
     $tele = $_POST['number'];
@@ -15,5 +15,5 @@ if(isset($_POST['ok'])) {
     mysqli_query($conn, $sql);
  
 }
-header('location:contact.php');
+header("location:contact.php");
 ?>
