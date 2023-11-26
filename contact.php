@@ -180,6 +180,56 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('form');
+
+            form.addEventListener('submit', function (event) {
+                if (!validateForm()) {
+                    event.preventDefault();
+                }
+            });
+
+            function validateForm() {
+                const firstName = document.querySelector('input[name="first"]').value.trim();
+                const lastName = document.querySelector('input[name="last"]').value.trim();
+                const phoneNumber = document.querySelector('input[name="number"]').value.trim();
+                const email = document.querySelector('input[name="email"]').value.trim();
+                const address = document.querySelector('input[name="adresse"]').value.trim();
+
+                const nameRegex = /^[a-zA-Z]+$/; 
+                const phoneRegex = /^\d{10}$/;
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (!nameRegex.test(firstName)) {
+                    alert('First name must contain only alphabets');
+                    return false;
+                }
+
+                if (!nameRegex.test(lastName)) {
+                    alert('Last name must contain only alphabets');
+                    return false;
+                }
+
+                if (!phoneRegex.test(phoneNumber)) {
+                    alert('Invalid phone number. Please enter 10 digits');
+                    return false;
+                }
+
+                if (!emailRegex.test(email)) {
+                    alert('Please enter a valid email address');
+                    return false;
+                }
+
+                if (address === '') {
+                    alert('Address cannot be empty');
+                    return false;
+                }
+
+                return true;
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -32,11 +32,13 @@ include 'connexion.php';
                             <div class="mb-3">
                                 <label for="nom" class="form-label">Nom:</label>
                                 <input type="text" class="form-control" id="nom" name="nom" required>
+                                <span id='nameerr'></span>
                             </div>
 
                             <div class="mb-3">
                                 <label for="password" class="form-label">Mot de passe:</label>
                                 <input type="password" class="form-control" id="password" name="password" required>
+                                <span id='passerr'></span>
                             </div>
 
                             <div class="text-center">
@@ -56,6 +58,43 @@ include 'connexion.php';
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('form');
+
+            form.addEventListener('submit', function (event) {
+                if (!validateForm()) {
+                    event.preventDefault();
+                }
+            });
+
+            function validateForm() {
+                const nom = document.getElementById('nom').value.trim();
+                const password = document.getElementById('password').value.trim();
+
+                const nameRegex = /^[a-zA-Z]+$/; 
+                const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z]).{6,}$/;
+
+                if (!nameRegex.test(nom)) {
+                   let tes = document.getElementById('nameerr');
+                   tes.innerHTML='Nom doit contenir seulement des lettres';
+                  tes.style.color='red';
+                    return false;
+                }
+                
+                if (!passwordRegex.test(password)) {
+                    let tes = document.getElementById('passerr');
+                   tes.innerHTML=' 6 caractères avec au moins une lettre et un chiffre';
+                  tes.style.color='red';
+                  
+                    return false;
+                }
+
+                return true; 
+            }
+        });
+    </script>
 </body>
 
 </html>

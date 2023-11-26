@@ -59,6 +59,45 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('form');
+
+            form.addEventListener('submit', function (event) {
+                if (!validateForm()) {
+                    event.preventDefault();
+                }
+            });
+
+            function validateForm() {
+                const nom = document.getElementById('nom').value.trim();
+                const prenom = document.getElementById('prenom').value.trim();
+                const password = document.getElementById('password').value.trim();
+
+                const nameRegex = /^[a-zA-Z]+$/; 
+                const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z]).{6,}$/; 
+
+                if (!nameRegex.test(nom)) {
+                    alert('Nom doit contenir seulement des lettres');
+                    return false;
+                }
+
+                if (!nameRegex.test(prenom)) {
+                    alert('Prénom doit contenir seulement des lettres');
+                    return false;
+                }
+
+                if (!passwordRegex.test(password)) {
+                    alert('Mot de passe doit contenir au moins 6 caractères avec au moins une lettre et un chiffre');
+                    return false;
+                }
+
+                return true; 
+            }
+        });
+    </script>
+   
 </body>
 
 </html>
