@@ -8,7 +8,6 @@ include 'connexion.php';
 if (isset($_POST["ok"])) {
     $name = $_POST["nom"];
     $pwd = MD5($_POST["password"]);
- echo $pwd;
     $sql = "SELECT * FROM profil WHERE nom='$name' and pwd= '$pwd'";
     $result = mysqli_query($conn, $sql);
 

@@ -39,7 +39,6 @@ $result = mysqli_query($conn, $query);
                         <div class="card-body">
                             <h2 class="d-flex" style="font-size:40px; font-weight:bold">Hi ,  <p class="card-title"></p></h2>
 
-                            <p class="card-text" style="opacity:.6">your ID: <?php echo $row['id_profil']; ?></p>
                             <p class="card-text" style="opacity:.6"> creation: <?php echo $row['date_creation']; ?></p>
 
                             <div class="card-text" style="opacity:.6">Last Online:
