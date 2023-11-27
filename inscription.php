@@ -4,6 +4,28 @@
 ?>
 
 
+<?php
+if (isset($_POST['ok'])) {
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $pwd = MD5($_POST["password"]);
+    $date_creation = date('Y-m-d');
+
+    $sql = "INSERT INTO profil (nom, prenom, pwd, date_creation) VALUES ('$nom', '$prenom', '$pwd', '$date_creation')";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        $id_profil = mysqli_insert_id($conn);
+
+        // $_SESSION['id_profil'] = $id_profil;
+
+        header("Location:login.php");
+        exit();
+    } else {
+        echo "Erreur lors de l'inscription : " . mysqli_error($conn);
+    }
+}
+?>
 
 <html lang="en">
 
@@ -101,26 +123,3 @@
 </body>
 
 </html>
-
-<?php
-if (isset($_POST['ok'])) {
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $pwd = MD5($_POST["password"]);
-    $date_creation = date('Y-m-d');
-
-    $sql = "INSERT INTO profil (nom, prenom, pwd, date_creation) VALUES ('$nom', '$prenom', '$pwd', '$date_creation')";
-    $result = mysqli_query($conn, $sql);
-
-    if ($result) {
-        $id_profil = mysqli_insert_id($conn);
-
-        $_SESSION['id_profil'] = $id_profil;
-
-        header("Location: login.php");
-        exit();
-    } else {
-        echo "Erreur lors de l'inscription : " . mysqli_error($conn);
-    }
-}
-?>

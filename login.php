@@ -4,6 +4,31 @@
 <?php
 include 'connexion.php';
 ?>
+<?php
+if (isset($_POST["ok"])) {
+    $name = $_POST["nom"];
+    $pwd = MD5($_POST["password"]);
+ echo $pwd;
+    $sql = "SELECT * FROM profil WHERE nom='$name' and pwd= '$pwd'";
+    $result = mysqli_query($conn, $sql);
+
+    if (!$result) {
+        header("Location: inscription.php");
+        exit();
+    } else {
+        if ($result->num_rows > 0) {
+            $user = mysqli_fetch_assoc($result);
+
+                $_SESSION['id_profil'] = $user["id_profil"];
+                header('Location: profile.php' );
+                exit(); 
+            
+        } else {
+            echo "User not found";
+        }
+    }
+}
+?>
 
 <html lang="en">
 
@@ -99,27 +124,3 @@ include 'connexion.php';
 
 </html>
 
-<?php
-if (isset($_POST["ok"])) {
-    $name = $_POST["nom"];
-    $pwd = MD5($_POST["password"]);
- echo $pwd;
-    $sql = "SELECT * FROM profil WHERE nom='$name' and pwd= '$pwd'";
-    $result = mysqli_query($conn, $sql);
-
-    if (!$result) {
-        header("Location: inscription.php");
-        exit();
-    } else {
-        if ($result->num_rows > 0) {
-            $user = mysqli_fetch_assoc($result);
-
-                $_SESSION['id_profil'] = $user["id_profil"];
-                header("Location: profile.php");
-            
-        } else {
-            echo "User not found";
-        }
-    }
-}
-?>
